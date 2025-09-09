@@ -1,0 +1,11 @@
+{
+  "app": {
+	"title": "Wand AI",
+	"subtitle": "Multi-Agent Task Solver"
+  },
+  "common": {
+	"loading": "Loading...",
+	"error": "Error",
+	"success": "Success"
+  }
+}
