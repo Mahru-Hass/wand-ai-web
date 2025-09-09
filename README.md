@@ -1,69 +1,139 @@
-# React + TypeScript + Vite
+# Wand AI Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern React 19 frontend application built with TypeScript, Tailwind CSS, and professional state management for multi-agent orchestration.
 
-Currently, two official plugins are available:
+## 🚀 Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **React 19** - Latest React with modern features
+- **TypeScript** - Full type safety throughout
+- **Tailwind CSS v4** - Modern utility-first styling
+- **TanStack Query** - Server state management
+- **Zustand** - Lightweight client state management
+- **React Router** - Client-side routing
+- **i18next** - Internationalization support
+- **Vite** - Fast build tool and dev server
+- **ESLint** - Modern flat config with React hooks
 
-## Expanding the ESLint configuration
+## 📋 Prerequisites
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- Node.js 18+ (recommended: Node.js 22 LTS)
+- npm 9+
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## 🛠️ Installation
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+1. **Clone the repository**
+   ```bash
+   git clone <repository-url>
+   cd wand-ai-web
+   ```
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+2. **Install dependencies**
+   ```bash
+   npm install
+   ```
+
+3. **Environment setup**
+   ```bash
+   cp .env.example .env
+   # Edit .env with your configuration
+   ```
+
+## 🚀 Running the Application
+
+### Development Mode
+```bash
+npm run dev
+```
+Starts the development server with hot module replacement (HMR).
+
+### Production Build
+```bash
+npm run build
+```
+Creates an optimized production build in the `dist` directory.
+
+### Linting
+```bash
+npm run lint
+```
+Runs ESLint to check for code quality issues.
+
+## 🏗️ Project Structure
+
+```
+src/
+├── components/          # Reusable UI components
+├── hooks/              # Custom React hooks
+│   └── useApi.ts      # API integration hooks
+├── lib/               # Utilities and configuration
+│   ├── constants.ts   # App constants and types
+│   └── queryClient.ts # TanStack Query configuration
+├── locales/           # Internationalization files
+│   └── en/
+│       └── translation.json
+├── pages/             # Route components
+├── stores/            # State management
+│   └── useAppStore.ts # Zustand store
+├── App.tsx           # Main app component
+├── i18n.ts           # i18n configuration
+├── main.tsx          # Application entry point
+└── index.css         # Global styles with Tailwind
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## 🌍 Internationalization
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+The app supports multiple languages using i18next:
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```typescript
+import { useTranslation } from 'react-i18next'
+
+function MyComponent() {
+  const { t } = useTranslation()
+  return <h1>{t('app.title')}</h1>
+}
 ```
+
+## 🎨 Styling
+
+The project uses Tailwind CSS v4 with zero-config setup:
+
+## 🔗 API Integration
+
+The frontend integrates with the Wand AI backend API:
+
+- **Health Check**: `GET /healthz`
+
+## 🧪 Development
+
+### Code Quality
+- **ESLint** - Linting with React hooks rules
+- **TypeScript** - Type checking
+- **Prettier** - Code formatting (if configured)
+
+## 📦 Dependencies
+
+### Production
+- **react** (^19.1.1) - React library
+- **react-dom** (^19.1.1) - React DOM
+- **@tanstack/react-query** - Server state management
+- **zustand** - Client state management
+- **react-router-dom** - Routing
+- **react-i18next** - Internationalization
+- **i18next** - i18n framework
+
+### Development
+- **vite** - Build tool and dev server
+- **@vitejs/plugin-react** - React plugin for Vite
+- **typescript** - TypeScript compiler
+- **@types/node** - Node.js types
+- **eslint** - Linting
+- **tailwindcss** - CSS framework
+
+## 🚀 Deployment
+
+### Build for Production
+```bash
+npm run build
+```
+
+**Built with ❤️ using React 19, TypeScript, and modern web technologies**
