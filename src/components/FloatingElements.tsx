@@ -1,5 +1,6 @@
-import { Brain, Cpu, Sparkles, Zap } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { Brain, Cpu, Sparkles, Zap } from 'lucide-react';
+
 import { ANIMATION_EASING } from '../lib/animations';
 
 const FloatingElements = () => {

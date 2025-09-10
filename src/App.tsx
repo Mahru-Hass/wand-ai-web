@@ -1,28 +1,20 @@
-import AnimatedBackground from './components/AnimatedBackground';
-import FloatingElements from './components/FloatingElements';
-import InteractiveCard from './components/InteractiveCard';
-import ParticleSystem from './components/ParticleSystem';
-import TypewriterWelcome from './components/TypewriterWelcome';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { AnimatePresence } from 'framer-motion';
+import HomePage from './pages/HomePage';
+import SearchPage from './pages/SearchPage';
+import NotFoundPage from './pages/NotFoundPage';
 
 function App() {
 	return (
-		<div className="min-h-screen relative overflow-hidden">
-			{/* Background layers */}
-			<AnimatedBackground />
-			<ParticleSystem />
-			<FloatingElements />
-
-			{/* Main content */}
-			<div className="relative z-10 min-h-screen flex items-center justify-center px-4">
-				<div className="max-w-6xl mx-auto text-center space-y-12">
-					<TypewriterWelcome />
-					<InteractiveCard />
-				</div>
-			</div>
-
-			{/* Bottom gradient fade */}
-			<div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-slate-900 to-transparent pointer-events-none" />
-		</div>
+		<Router>
+			<AnimatePresence mode="wait">
+				<Routes>
+					<Route path="/" element={<HomePage />} />
+					<Route path="/search" element={<SearchPage />} />
+					<Route path="*" element={<NotFoundPage />} />
+				</Routes>
+			</AnimatePresence>
+		</Router>
 	);
 }
 

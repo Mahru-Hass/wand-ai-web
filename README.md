@@ -8,8 +8,8 @@ A modern React 19 frontend application with stunning animations, built with Type
 - **TypeScript** - Full type safety throughout the application
 - **Tailwind CSS v4** - Modern utility-first styling with custom animations
 - **Framer Motion** - Smooth animations and transitions
-- **TanStack Query v5** - Advanced server state management
 - **Zustand** - Lightweight client state management
+- **WebSocket** - Real-time bidirectional communication
 - **React Router v6** - Client-side routing
 - **i18next** - Internationalization support
 - **Vite** - Lightning-fast build tool and dev server
@@ -57,6 +57,41 @@ npm run dev
 ```
 Starts the development server with hot module replacement (HMR) at `http://127.0.0.1:5173`
 
+## 🔌 WebSocket Integration
+
+This application uses WebSocket for real-time communication with the backend API. The WebSocket connection provides:
+
+### **Real-time Features:**
+- **Live Agent Status Updates** - See agents working in real-time
+- **Progress Tracking** - Watch as each agent completes their tasks
+- **Instant Results** - Receive final answers immediately when ready
+- **Connection Status** - Visual indicator of WebSocket connection state
+
+### **WebSocket Architecture:**
+```typescript
+// WebSocket connection management
+const { sendMessage } = useWebSocket('ws://127.0.0.1:4000/ws');
+
+// State management with Zustand
+const { messages, isConnected, isLoading } = useAppStore();
+
+// Message processing with custom hook
+useMessageProcessor(); // Handles sequential message display
+```
+
+### **Message Flow:**
+1. **User submits query** → WebSocket sends request
+2. **Backend processes** → Sends agent status updates
+3. **Agents complete** → Individual results received
+4. **Gemini synthesis** → Final answer delivered
+5. **UI updates** → Real-time status and results display
+
+### **Connection Management:**
+- **Auto-reconnect** - Automatically reconnects on connection loss
+- **Error handling** - Graceful error states and user feedback
+- **Loading states** - Visual feedback during processing
+- **Message queuing** - Ensures no messages are lost
+
 ### Production Build
 ```bash
 npm run build
@@ -88,9 +123,10 @@ src/
 ├── lib/                    # Utilities and configuration (3 files)
 │   ├── animations.ts       # Reusable animation constants
 │   ├── constants.ts        # App configuration & colors
-│   └── queryClient.ts      # TanStack Query setup
-├── hooks/                  # Custom React hooks (1 file)
-│   └── useApi.ts          # API integration hooks
+│   └── features.ts         # Static feature data
+├── hooks/                  # Custom React hooks (2 files)
+│   ├── useWebSocket.ts     # WebSocket connection management
+│   └── useMessageProcessor.ts # Message processing logic
 ├── stores/                 # State management (1 file)
 │   └── useAppStore.ts     # Zustand store
 ├── locales/               # Internationalization (1 file)
@@ -174,7 +210,6 @@ The frontend integrates with the Wand AI backend API:
 ### Production
 - **react** (^19.1.1) - React library with concurrent features
 - **react-dom** (^19.1.1) - React DOM
-- **@tanstack/react-query** (^5.87.1) - Server state management
 - **zustand** (^5.0.8) - Client state management
 - **react-router-dom** (^7.8.2) - Routing
 - **react-i18next** (^15.7.3) - Internationalization
@@ -203,7 +238,7 @@ npm run build
 - ✅ **TypeScript** - Full type safety
 - ✅ **Tailwind CSS v4** - Modern styling with custom animations
 - ✅ **Framer Motion** - Smooth animations and transitions
-- ✅ **State Management** - TanStack Query + Zustand
+- ✅ **State Management** - Zustand with WebSocket integration
 - ✅ **Internationalization** - i18next support
 - ✅ **Performance Optimized** - useMemo, proper imports, efficient animations
 - ✅ **Clean Architecture** - Modular components, reusable utilities

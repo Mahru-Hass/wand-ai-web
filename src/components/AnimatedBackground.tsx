@@ -1,5 +1,6 @@
 import { useMemo } from 'react';
 import { motion } from 'framer-motion';
+
 import { ANIMATION_EASING, generateRandomPositions, generateRandomValues } from '../lib/animations';
 import { APP_CONFIG, COLORS } from '../lib/constants';
 

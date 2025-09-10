@@ -1,5 +1,5 @@
-import { motion } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
+import { motion } from 'framer-motion';
 import { TypeAnimation } from 'react-type-animation';
 import { ANIMATION_DELAY, COMMON_ANIMATIONS } from '../lib/animations';
 import { COLORS } from '../lib/constants';
