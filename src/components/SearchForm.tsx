@@ -118,8 +118,6 @@ const SearchForm = () => {
           <motion.button
             type="submit"
             disabled={isSubmitDisabled}
-            whileHover={!isSubmitDisabled ? { scale: 1.05 } : {}}
-            whileTap={!isSubmitDisabled ? { scale: 0.95 } : {}}
             className={`absolute right-3 top-1/2 transform -translate-y-1/2 p-2 rounded-lg transition-all ${submitButtonClasses}`}
             aria-label={isLoading ? "Processing request" : "Submit search"}
           >

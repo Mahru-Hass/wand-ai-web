@@ -1,22 +1,28 @@
 # Wand AI Frontend
 
-A modern React 19 frontend application with stunning animations, built with TypeScript, Tailwind CSS, and professional state management for multi-agent orchestration.
+A modern React 19 frontend application with stunning animations, built with TypeScript, Tailwind CSS v3, and professional state management for multi-agent orchestration.
 
 ## 🚀 Features
 
 - **React 19** - Latest React with modern features and concurrent rendering
 - **TypeScript** - Full type safety throughout the application
-- **Tailwind CSS v4** - Modern utility-first styling with custom animations
+- **Tailwind CSS v3** - Modern utility-first styling with PostCSS integration
 - **Framer Motion** - Smooth animations and transitions
 - **Zustand** - Lightweight client state management
-- **WebSocket** - Real-time bidirectional communication
-- **React Router v6** - Client-side routing
+- **WebSocket** - Real-time bidirectional communication with retry logic
+- **React Router v6** - Client-side routing with 404 error handling
 - **i18next** - Internationalization support
 - **Vite** - Lightning-fast build tool and dev server
 - **ESLint** - Modern flat config with React hooks and TypeScript rules
+- **Error Boundaries** - Graceful error handling and recovery
+- **Markdown Rendering** - Rich text display with syntax highlighting
 
 ## 🎨 UI Features
 
+- **Search Interface** - Dynamic textarea with auto-expansion and ChatGPT-style layout
+- **Real-time Status Updates** - Sequential agent progress with smooth animations
+- **Markdown Results** - Rich text rendering with syntax highlighting
+- **Error Boundaries** - Professional error handling with retry logic
 - **Animated Background** - Floating orbs with gradient mesh
 - **Particle System** - 50+ floating particles with smooth animations
 - **Typewriter Effect** - Dynamic welcome messages
@@ -24,6 +30,7 @@ A modern React 19 frontend application with stunning animations, built with Type
 - **Floating Icons** - Animated AI-related icons
 - **Responsive Design** - Mobile-first approach
 - **Custom Scrollbars** - Styled with gradient colors
+- **404 Error Page** - Professional not-found page with navigation
 
 ## 📋 Prerequisites
 
@@ -114,28 +121,45 @@ Serves the production build locally for testing.
 
 ```
 src/
-├── components/              # UI Components (5 files)
+├── components/                    # UI Components
+│   ├── SearchForm.tsx            # Main search interface with textarea
+│   ├── SearchResults/            # Search results components
+│   │   ├── FinalResult.tsx       # Final Gemini response display
+│   │   └── StatusMessage.tsx     # Real-time agent status updates
+│   ├── SearchPageLayout.tsx      # Search page layout wrapper
+│   ├── SearchHeader.tsx          # Navigation header
+│   ├── SearchTitle.tsx           # Page title component
+│   ├── FeaturesSection.tsx       # Features display
+│   ├── MarkdownRenderer.tsx      # Rich text rendering
+│   ├── ErrorBoundary.tsx         # Error handling component
 │   ├── AnimatedBackground.tsx    # Floating orbs & gradient mesh
 │   ├── FloatingElements.tsx      # Animated AI icons
 │   ├── InteractiveCard.tsx       # 3D hover card with glassmorphism
 │   ├── ParticleSystem.tsx        # 50+ floating particles
 │   └── TypewriterWelcome.tsx     # Dynamic welcome messages
-├── lib/                    # Utilities and configuration (3 files)
-│   ├── animations.ts       # Reusable animation constants
-│   ├── constants.ts        # App configuration & colors
-│   └── features.ts         # Static feature data
-├── hooks/                  # Custom React hooks (2 files)
-│   ├── useWebSocket.ts     # WebSocket connection management
-│   └── useMessageProcessor.ts # Message processing logic
-├── stores/                 # State management (1 file)
-│   └── useAppStore.ts     # Zustand store
-├── locales/               # Internationalization (1 file)
+├── pages/                        # Application pages
+│   ├── HomePage.tsx              # Landing page
+│   ├── SearchPage.tsx            # Main search interface
+│   └── NotFoundPage.tsx          # 404 error page
+├── hooks/                        # Custom React hooks
+│   ├── useWebSocket.ts           # WebSocket connection with retry logic
+│   ├── useMessageProcessor.ts    # Sequential message processing
+│   └── useRetry.ts               # Retry logic for error handling
+├── stores/                       # State management
+│   └── useAppStore.ts            # Zustand store with WebSocket integration
+├── lib/                          # Utilities and configuration
+│   ├── animations.ts             # Reusable animation constants
+│   ├── constants.ts              # App configuration & colors
+│   └── features.ts               # Static feature data
+├── locales/                      # Internationalization
 │   └── en/
 │       └── translation.json
-├── App.tsx                # Main app component
-├── main.tsx               # Application entry point
-├── i18n.ts                # i18n configuration
-└── index.css              # Global styles with Tailwind
+├── types/                        # TypeScript type definitions
+│   └── websocket.ts              # WebSocket message types
+├── App.tsx                       # Main app component with routing
+├── main.tsx                      # Application entry point
+├── i18n.ts                       # i18n configuration
+└── index.css                     # Global styles with Tailwind v3
 ```
 
 ## 🎯 Performance Optimizations
@@ -165,11 +189,12 @@ function MyComponent() {
 
 ## 🎨 Styling & Animations
 
-### Tailwind CSS v4
-- Zero-config setup with direct import
+### Tailwind CSS v3
+- PostCSS integration for better compatibility
 - Custom scrollbar styling
 - Gradient color schemes
 - Responsive design utilities
+- Docker-friendly build process
 
 ### Framer Motion
 - Smooth page transitions
@@ -223,7 +248,13 @@ The frontend integrates with the Wand AI backend API:
 - **typescript** (~5.8.3) - TypeScript compiler
 - **@types/node** (^24.3.1) - Node.js types
 - **eslint** (^9.33.0) - Linting with flat config
-- **tailwindcss** (^4.1.13) - CSS framework
+- **tailwindcss** (^3.4.0) - CSS framework with PostCSS
+- **postcss** - CSS processing
+- **autoprefixer** - CSS vendor prefixing
+- **react-markdown** - Markdown rendering
+- **remark-gfm** - GitHub Flavored Markdown
+- **rehype-highlight** - Syntax highlighting
+- **highlight.js** - Code syntax highlighting
 
 ## 🚀 Deployment
 
@@ -236,9 +267,14 @@ npm run build
 
 - ✅ **Modern React 19** - Latest features and concurrent rendering
 - ✅ **TypeScript** - Full type safety
-- ✅ **Tailwind CSS v4** - Modern styling with custom animations
+- ✅ **Tailwind CSS v3** - Modern styling with PostCSS integration
 - ✅ **Framer Motion** - Smooth animations and transitions
 - ✅ **State Management** - Zustand with WebSocket integration
+- ✅ **Error Handling** - Error boundaries and retry logic
+- ✅ **Markdown Rendering** - Rich text display with syntax highlighting
+- ✅ **Real-time Updates** - WebSocket with sequential message processing
+- ✅ **404 Error Handling** - Professional not-found page
+- ✅ **Docker Support** - Containerized deployment ready
 - ✅ **Internationalization** - i18next support
 - ✅ **Performance Optimized** - useMemo, proper imports, efficient animations
 - ✅ **Clean Architecture** - Modular components, reusable utilities
