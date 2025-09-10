@@ -1,11 +1,18 @@
 {
-  "app": {
-	"title": "Wand AI",
-	"subtitle": "Multi-Agent Task Solver"
-  },
-  "common": {
-	"loading": "Loading...",
-	"error": "Error",
-	"success": "Success"
-  }
+	"app": {
+		"title": "WAND AI"
+	},
+	"welcome": {
+		"message1": "Welcome to the future of AI orchestration",
+		"message2": "Where intelligent agents work in harmony",
+		"message3": "Transforming ideas into reality",
+		"message4": "Powered by advanced AI technology",
+		"message5": "Experience the magic of multi-agent systems",
+		"description": "Orchestrate multiple AI agents to tackle complex business challenges with real-time updates and intelligent synthesis"
+	},
+	"card": {
+		"title": "Ready to Begin?",
+		"description": "Experience the power of AI agent orchestration with real-time updates and intelligent synthesis",
+		"button": "Start Your Journey"
+	}
 }

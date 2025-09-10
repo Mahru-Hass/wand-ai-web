@@ -1,16 +1,29 @@
-import { useTranslation } from 'react-i18next'
+import AnimatedBackground from './components/AnimatedBackground';
+import FloatingElements from './components/FloatingElements';
+import InteractiveCard from './components/InteractiveCard';
+import ParticleSystem from './components/ParticleSystem';
+import TypewriterWelcome from './components/TypewriterWelcome';
 
 function App() {
-	const { t } = useTranslation()
-
 	return (
-		<div className="min-h-screen bg-neutral-950 text-neutral-100 flex items-center justify-center">
-			<div className="text-center">
-				<h1 className="text-4xl font-bold text-white">{t('app.title')}</h1>
-				<p className="mt-4 text-neutral-400">{t('app.subtitle')}</p>
+		<div className="min-h-screen relative overflow-hidden">
+			{/* Background layers */}
+			<AnimatedBackground />
+			<ParticleSystem />
+			<FloatingElements />
+
+			{/* Main content */}
+			<div className="relative z-10 min-h-screen flex items-center justify-center px-4">
+				<div className="max-w-6xl mx-auto text-center space-y-12">
+					<TypewriterWelcome />
+					<InteractiveCard />
+				</div>
 			</div>
+
+			{/* Bottom gradient fade */}
+			<div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-slate-900 to-transparent pointer-events-none" />
 		</div>
-	)
+	);
 }
 
-export default App
+export default App;
