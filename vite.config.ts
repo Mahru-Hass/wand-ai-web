@@ -4,6 +4,10 @@ import tailwindcss from '@tailwindcss/vite'
 
 export default defineConfig({
 	plugins: [react(), tailwindcss()],
+	build: {
+    chunkSizeWarningLimit: 1000,
+    cssMinify: 'esbuild'
+  },
 	server: {
 		host: process.env.VITE_HOST || '127.0.0.1',
 		port: Number(process.env.VITE_PORT) || 5173,
